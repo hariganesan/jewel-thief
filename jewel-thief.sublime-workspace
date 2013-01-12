@@ -1,0 +1,287 @@
+{
+	"auto_complete":
+	{
+		"selected_items":
+		[
+		]
+	},
+	"buffers":
+	[
+	],
+	"build_system": "",
+	"command_palette":
+	{
+		"height": 167.0,
+		"selected_items":
+		[
+			[
+				"mark",
+				"Set Syntax: Markdown"
+			]
+		],
+		"width": 384.0
+	},
+	"console":
+	{
+		"height": 0.0
+	},
+	"distraction_free":
+	{
+		"menu_visible": true,
+		"show_minimap": false,
+		"show_open_files": false,
+		"show_tabs": false,
+		"side_bar_visible": false,
+		"status_bar_visible": false
+	},
+	"file_history":
+	[
+		"/Users/Hari/scm/yale-tetris/tetris.cpp",
+		"/Users/Hari/scm/yale-tetris/Makefile",
+		"/Users/Hari/scm/yale-tetris/README.md",
+		"/Users/Hari/scm/yale-tetris/yale-tetris.sublime-workspace",
+		"/Users/Hari/scm/yale-tetris/test.cpp",
+		"/Users/Hari/scm/yale-tetris/SDL/SDLMain.m",
+		"/Users/Hari/scm/yale-tetris/SDL/SDLMain.h",
+		"/Users/Hari/scm/yale-tetris/SDL/ReadMeDevLite.txt",
+		"/Users/Hari/scm/yale-tetris/Block.cpp",
+		"/Users/Hari/scm/yale-tetris/Block.h",
+		"/Users/Hari/scm/yale-tetris/src/tetris.cpp",
+		"/Users/Hari/scm/yale-tetris/Grid.h",
+		"/Users/Hari/scm/yale-tetris/Grid.cpp",
+		"/Users/Hari/scm/yale-tetris/yale-tetris.sublime-project",
+		"/Users/Hari/Library/Application Support/Sublime Text 2/Packages/Default/Preferences.sublime-settings",
+		"/Users/Hari/Library/Application Support/Sublime Text 2/Packages/User/Preferences.sublime-settings",
+		"/Users/Hari/scm/yale-tetris/.gitignore",
+		"/Users/Hari/scm/yale-tetris/yale-tetris",
+		"/Users/Hari/scm/music-visualizer/server/src/UDPServer.java",
+		"/Users/Hari/scm/music-visualizer/server/src/UDPClient.java",
+		"/Users/Hari/scm/music-visualizer/server/src/ServiceThread.java",
+		"/Users/Hari/Documents/Yale/CS445/HW3/queue.h",
+		"/Users/Hari/scm/music-visualizer/README.md",
+		"/Users/Hari/scm/music-visualizer/server/src/Server.java"
+	],
+	"find":
+	{
+		"height": 35.0
+	},
+	"find_in_files":
+	{
+		"height": 0.0,
+		"where_history":
+		[
+			"/Users/Hari/scm/yale-tetris"
+		]
+	},
+	"find_state":
+	{
+		"case_sensitive": false,
+		"find_history":
+		[
+			"200",
+			"150",
+			"                      ",
+			"position",
+			"surface",
+			"j",
+			"                      ",
+			"250",
+			"i",
+			"x",
+			"g.",
+			"b",
+			"Block",
+			"block",
+			"Block",
+			"block",
+			"Block",
+			"block",
+			"Block",
+			"FULL_Shape",
+			"BLOCK",
+			"Block",
+			"BLOCK",
+			"Block",
+			"block",
+			"Block",
+			"FULL_BLOCK",
+			"MAX",
+			"MAX_BLOCK_DIM",
+			"BLOCK_DIM",
+			", ",
+			"BLOCK_DIM+i",
+			"BLOCK_DIM+j",
+			"BLOCK_WIDTH",
+			"25",
+			";\n	}",
+			"cas",
+			"case 0:",
+			" =",
+			"grid[",
+			"grid[0]",
+			"space",
+			"tab",
+			"octhecdec",
+			"initia",
+			"random_",
+			"overlap",
+			"const ",
+			"const",
+			"const ",
+			"size",
+			"qtn",
+			"node",
+			"boxs",
+			"node",
+			"nod",
+			"nodes",
+			"node",
+			"//",
+			"	",
+			"dist =",
+			"lldist =",
+			"dist",
+			"ruler",
+			"qtsize",
+			"*size",
+			"size",
+			"qt",
+			"distance",
+			"queueSize",
+			"qt",
+			"inBox",
+			"nodesToCheck",
+			"noCandidates",
+			"continue;\n      }\n      ",
+			"CHILD",
+			"      {",
+			"qt",
+			"qtd",
+			"qt",
+			"END_POINT",
+			"START_POINT",
+			"qt",
+			"qtd",
+			"qt",
+			"uli",
+			"lli",
+			"uli",
+			"lli",
+			"CHILD",
+			"tree_cols",
+			"               ",
+			"              ",
+			"             ",
+			"            ",
+			"           ",
+			"          ",
+			"         ",
+			"        ",
+			"       ",
+			"      ",
+			"     ",
+			"    ",
+			"   ",
+			"  ",
+			"CHILD",
+			"qt",
+			"qtd",
+			"qt",
+			"qtCols",
+			"  ",
+			"    ",
+			"   ",
+			"  ",
+			"    ",
+			"   ",
+			"  ",
+			"init_quadrant"
+		],
+		"highlight": true,
+		"in_selection": false,
+		"preserve_case": false,
+		"regex": false,
+		"replace_history":
+		[
+		],
+		"reverse": false,
+		"show_context": true,
+		"use_buffer2": true,
+		"whole_word": false,
+		"wrap": true
+	},
+	"groups":
+	[
+		{
+			"sheets":
+			[
+			]
+		}
+	],
+	"incremental_find":
+	{
+		"height": 0.0
+	},
+	"input":
+	{
+		"height": 31.0
+	},
+	"layout":
+	{
+		"cells":
+		[
+			[
+				0,
+				0,
+				1,
+				1
+			]
+		],
+		"cols":
+		[
+			0.0,
+			1.0
+		],
+		"rows":
+		[
+			0.0,
+			1.0
+		]
+	},
+	"menu_visible": true,
+	"output.exec":
+	{
+		"height": 129.0
+	},
+	"replace":
+	{
+		"height": 64.0
+	},
+	"save_all_on_build": true,
+	"select_file":
+	{
+		"height": 0.0,
+		"selected_items":
+		[
+			[
+				"se",
+				"/Users/Hari/Documents/Yale/CS445/HW3/seek.c"
+			]
+		],
+		"width": 0.0
+	},
+	"select_project":
+	{
+		"height": 0.0,
+		"selected_items":
+		[
+		],
+		"width": 0.0
+	},
+	"show_minimap": true,
+	"show_open_files": false,
+	"show_tabs": true,
+	"side_bar_visible": true,
+	"side_bar_width": 148.0,
+	"status_bar_visible": true
+}
