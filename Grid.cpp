@@ -154,3 +154,6 @@ void Grid::lockJewel(bool locked) {
 	}
 }
 
+void Grid::swap(Jewel locked, Jewel selected) {
+	;
+}

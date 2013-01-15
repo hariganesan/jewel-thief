@@ -50,4 +50,5 @@ public:
 	void pickColor(Jewel jewel);
 	void selectJewel(int x, int y);
 	void lockJewel(bool locked);
+	void swap(Jewel locked, Jewel selected);
 };
