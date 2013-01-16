@@ -4,6 +4,9 @@
 #include "Grid.h"
 
 Grid::Grid() {
+	// initialize number of moves
+	numMoves = 0;
+
 	// initialize grid pointers (very inefficient)
 	for (int i = 0; i < GRID_HEIGHT; i++) {
 		for (int j = 0; j < GRID_WIDTH; j++) {
@@ -11,16 +14,17 @@ Grid::Grid() {
 			grid[i][j].x = j;
 			grid[i][j].y = i;
 
+			// flip vertical axes?
 			if (i - 1 < 0) {
-				grid[i][j].up = NULL;
-			} else {
-				grid[i][j].up = &grid[i-1][j];
-			}
-
-			if (i + i >= GRID_HEIGHT) {
 				grid[i][j].down = NULL;
 			} else {
-				grid[i][j].down = &grid[i+1][j];
+				grid[i][j].down = &grid[i-1][j];
+			}
+
+			if (i + 1 >= GRID_HEIGHT) {
+				grid[i][j].up = NULL;
+			} else {
+				grid[i][j].up = &grid[i+1][j];
 			}
 
 			if (j - 1 < 0) {
@@ -130,7 +134,7 @@ void Grid::pickColor(Jewel jewel) {
 
 }
 
-void Grid::selectJewel(int x, int y) {
+Jewel *Grid::selectJewel(int x, int y) {
 	for (int i = 0; i < GRID_HEIGHT; i++) {
 		for (int j = 0; j < GRID_WIDTH; j++) {
 			grid[i][j].selected = false;
@@ -138,6 +142,14 @@ void Grid::selectJewel(int x, int y) {
 	}
 
 	grid[y][x].selected = true;
+	return &(grid[y][x]);
+}
+
+Jewel *Grid::selectJewel(Jewel *oldJewel, Jewel *jewel) {
+	(*oldJewel).selected = false;
+	(*jewel).selected = true;
+
+	return jewel;
 }
 
 void Grid::lockJewel(bool locked) {
@@ -154,6 +166,61 @@ void Grid::lockJewel(bool locked) {
 	}
 }
 
-void Grid::swap(Jewel locked, Jewel selected) {
-	;
+Jewel *Grid::swap(Jewel *locked, Jewel *selected) {
+	Jewel temp;
+
+	// for edges
+	if (selected == NULL)
+		return locked;
+
+	// transfer all properties - color, special, x, y
+	// TODO: should just switch boxes and update pointers instead...
+	temp.color = (*locked).color;
+	temp.special = (*locked).special;
+	temp.selected = (*locked).selected;
+	temp.locked = (*locked).locked;
+	temp.x = (*locked).x;
+	temp.y = (*locked).y;
+
+	(*locked).color = (*selected).color;
+	(*locked).special = (*selected).special;
+	(*locked).selected = (*selected).selected;
+	(*locked).locked = (*selected).locked;
+	(*locked).x = (*selected).x;
+	(*locked).y = (*selected).y;
+
+	(*selected).color = temp.color;
+	(*selected).special = temp.special;
+	(*selected).selected = temp.selected;
+	(*selected).locked = temp.locked;
+	(*selected).x = temp.x;
+	(*selected).y = temp.y;
+
+	numMoves++;
+
+	return selected;
+}
+
+Jewel *Grid::move(Jewel *selectedJewel, string direction) {
+	if (direction == "right") {
+		if ((*selectedJewel).right != NULL) {
+			return selectJewel(selectedJewel, (*selectedJewel).right);
+		}
+	} else if (direction == "left") {
+		if ((*selectedJewel).left != NULL) {
+			return selectJewel(selectedJewel, (*selectedJewel).left);
+		}
+	} else if (direction == "up") {
+		if ((*selectedJewel).up != NULL) {
+			return selectJewel(selectedJewel, (*selectedJewel).up);
+		}
+	} else if (direction == "down") {
+		if ((*selectedJewel).down != NULL) {
+			return selectJewel(selectedJewel, (*selectedJewel).down);
+		}
+	} else {
+		fprintf(stderr, "error: no direction given");
+	}
+
+	return selectedJewel;
 }

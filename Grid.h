@@ -43,12 +43,16 @@ struct Jewel {
 
 class Grid {
 	Jewel grid[GRID_HEIGHT][GRID_WIDTH];
+	int numMoves;
 public:
 	Grid();
 	void fillGrid();
 	void displayGrid(int x, int y);
 	void pickColor(Jewel jewel);
-	void selectJewel(int x, int y);
+	Jewel *selectJewel(int x, int y);
+	Jewel *selectJewel(Jewel *oldJewel, Jewel *jewel);
 	void lockJewel(bool locked);
-	void swap(Jewel locked, Jewel selected);
+	Jewel *swap(Jewel *locked, Jewel *selected);
+
+	Jewel *move(Jewel *selectedJewel, string direction);
 };

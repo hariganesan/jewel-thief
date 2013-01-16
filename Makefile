@@ -4,7 +4,7 @@
 # compiler options
 CC=g++
 CFLAGS=-pedantic -Wall -I/sw/include -L/sw/lib
-SDL=-lSDLmain -framework SDL -framework SDL_ttf
+SDL=-lSDLmain -lSDL -lSDL_ttf
 COCOA=-framework Cocoa
 GL=-framework OpenGL -L/sw/lib
 

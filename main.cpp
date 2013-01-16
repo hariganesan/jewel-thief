@@ -58,7 +58,7 @@ void runGame() {
 	bool locked = false;
 	Grid g = Grid();
 	g.fillGrid();
-	g.selectJewel(3,2);
+	Jewel *jewelSelected = g.selectJewel(3,2);
 
 	SDL_Event event;	
 
@@ -67,9 +67,32 @@ void runGame() {
 			if (event.type == SDL_QUIT || 
 				 (event.type == SDL_KEYUP && event.key.keysym.sym == SDLK_q)) {
 				isRunning = false;
-			}
 			// lock a tile
 			// TODO: hold both shift?
+			}
+
+			if (locked) {
+				if (event.type == SDL_KEYUP && event.key.keysym.sym == SDLK_RIGHT) {
+					jewelSelected = g.swap(jewelSelected, (*jewelSelected).right);
+				} else if (event.type == SDL_KEYUP && event.key.keysym.sym == SDLK_LEFT) {
+					jewelSelected = g.swap(jewelSelected, (*jewelSelected).left);
+				} else if (event.type == SDL_KEYUP && event.key.keysym.sym == SDLK_UP) {
+					jewelSelected = g.swap(jewelSelected, (*jewelSelected).up);
+				} else if (event.type == SDL_KEYUP && event.key.keysym.sym == SDLK_DOWN) {
+					jewelSelected = g.swap(jewelSelected, (*jewelSelected).down);
+				}
+			} else {
+				if (event.type == SDL_KEYUP && event.key.keysym.sym == SDLK_RIGHT) {
+					jewelSelected = g.move(jewelSelected, "right");
+				} else if (event.type == SDL_KEYUP && event.key.keysym.sym == SDLK_LEFT) {
+					jewelSelected = g.move(jewelSelected, "left");
+				} else if (event.type == SDL_KEYUP && event.key.keysym.sym == SDLK_UP) {
+					jewelSelected = g.move(jewelSelected, "up");
+				} else if (event.type == SDL_KEYUP && event.key.keysym.sym == SDLK_DOWN) {
+					jewelSelected = g.move(jewelSelected, "down");
+				}
+			}
+
 			if (event.type == SDL_KEYUP && 
 				 (event.key.keysym.sym == SDLK_LSHIFT || event.key.keysym.sym == SDLK_RSHIFT)) {
 				locked = false;
