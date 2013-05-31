@@ -9,7 +9,7 @@
 #include <sstream>
 #include <string>
 #include <math.h>
-#include "Grid.h"
+#include "Grid.hpp"
 
 // window dimensions
 const int WINDOW_WIDTH = 600;
@@ -94,16 +94,16 @@ void runGame() {
 		// LOGIC
 		if (locked) {
 			if (keys.right) {
-				jewelSelected = g.swap(jewelSelected, (*jewelSelected).right);
+				jewelSelected = g.swap(jewelSelected, jewelSelected->right);
 				keys.right = false;
 			} else if (keys.left) {
-				jewelSelected = g.swap(jewelSelected, (*jewelSelected).left);
+				jewelSelected = g.swap(jewelSelected, jewelSelected->left);
 				keys.left = false;
 			} else if (keys.up) {
-				jewelSelected = g.swap(jewelSelected, (*jewelSelected).up);
+				jewelSelected = g.swap(jewelSelected, jewelSelected->up);
 				keys.up = false;
 			} else if (keys.down) {
-				jewelSelected = g.swap(jewelSelected, (*jewelSelected).down);
+				jewelSelected = g.swap(jewelSelected, jewelSelected->down);
 				keys.down = false;
 			}
 		} else {

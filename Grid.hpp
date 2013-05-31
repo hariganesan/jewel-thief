@@ -30,6 +30,7 @@ struct Jewel {
 	bool special;
 	bool selected;
 	bool locked;
+	bool removed;
 
 	Jewel *left;
 	Jewel *down;
@@ -44,6 +45,8 @@ struct Jewel {
 class Grid {
 	Jewel grid[GRID_HEIGHT][GRID_WIDTH];
 	int numMoves;
+	bool remove;
+	
 public:
 	Grid();
 	void fillGrid();
@@ -53,8 +56,9 @@ public:
 	Jewel *selectJewel(Jewel *oldJewel, Jewel *jewel);
 	void lockJewel(bool locked);
 	Jewel *swap(Jewel *locked, Jewel *selected);
-
 	Jewel *move(Jewel *selectedJewel, string direction);
+	void checkJewel(Jewel *original);
+	void removeJewels(Jewel *original, int right, int left, int up, int down);
 };
 
 // events to be used to hold info for game logic

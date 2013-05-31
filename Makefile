@@ -17,9 +17,8 @@ main: main.o Grid.o
 main.o: main.cpp
 	$(CC) $(CFLAGS) -c $^
 
-Grid.o: Grid.cpp Grid.h
+Grid.o: Grid.cpp
 	$(CC) $(CFLAGS) -c $^
 
 clean:
 	rm *.o
-	rm *.h.gch

@@ -1,12 +1,9 @@
 // Hari Ganesan 1/12/13
 // Grid functions for jewel-thief
 
-#include "Grid.h"
+#include "Grid.hpp"
 
-Grid::Grid() {
-	// initialize number of moves
-	numMoves = 0;
-
+Grid::Grid() : numMoves(0), remove(false) {
 	// initialize grid pointers (very inefficient)
 	for (int i = 0; i < GRID_HEIGHT; i++) {
 		for (int j = 0; j < GRID_WIDTH; j++) {
@@ -53,6 +50,7 @@ void Grid::fillGrid() {
 			grid[i][j].selected = false;
 			grid[i][j].locked = false;
 			grid[i][j].special = (rand() % 30 == 0) ? true : false;
+			grid[i][j].removed = false;
 		}
 	}
 }
@@ -198,6 +196,9 @@ Jewel *Grid::swap(Jewel *locked, Jewel *selected) {
 
 	numMoves++;
 
+	checkJewel(selected);
+	checkJewel(locked);
+
 	return selected;
 }
 
@@ -223,4 +224,59 @@ Jewel *Grid::move(Jewel *selectedJewel, string direction) {
 	}
 
 	return selectedJewel;
+}
+
+// checks to see if a Jewel satisfies a requirement in any direction
+void Grid::checkJewel(Jewel *original) {
+	int right, left, up, down;
+	right = left = up = down = 0;
+	Jewel *current, *next;
+
+	current = original;
+	while ((next = current->right) != NULL) {
+		if (next->color != current->color) {
+			break;
+		} else {
+			right++;
+			current = next;
+		}
+	}
+
+	current = original;
+	while ((next = current->left) != NULL) {
+		if (next->color != current->color) {
+			break;
+		} else {
+			left++;
+			current = next;
+		}
+	}
+
+	current = original;
+	while ((next = current->up) != NULL) {
+		if (next->color != current->color) {
+			break;
+		} else {
+			up++;
+			current = next;
+		}
+	}
+
+	current = original;
+	while ((next = current->down) != NULL) {
+		if (next->color != current->color) {
+			break;
+		} else {
+			down++;
+			current = next;
+		}
+	}
+
+	if (right+left >= 3 || up+down >= 3) {
+		removeJewels(original, right, left, up, down);
+	}
+}
+
+void Grid::removeJewels(Jewel *original, int right, int left, int up, int down) {
+	;
 }
