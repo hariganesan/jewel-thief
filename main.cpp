@@ -59,6 +59,7 @@ void runGame() {
 	Grid g = Grid();
 	g.fillGrid();
 	Jewel *jewelSelected = g.selectJewel(3,2);
+	Keys keys = Keys();
 
 	SDL_Event event;	
 
@@ -71,26 +72,14 @@ void runGame() {
 			// TODO: hold both shift?
 			}
 
-			if (locked) {
-				if (event.type == SDL_KEYUP && event.key.keysym.sym == SDLK_RIGHT) {
-					jewelSelected = g.swap(jewelSelected, (*jewelSelected).right);
-				} else if (event.type == SDL_KEYUP && event.key.keysym.sym == SDLK_LEFT) {
-					jewelSelected = g.swap(jewelSelected, (*jewelSelected).left);
-				} else if (event.type == SDL_KEYUP && event.key.keysym.sym == SDLK_UP) {
-					jewelSelected = g.swap(jewelSelected, (*jewelSelected).up);
-				} else if (event.type == SDL_KEYUP && event.key.keysym.sym == SDLK_DOWN) {
-					jewelSelected = g.swap(jewelSelected, (*jewelSelected).down);
-				}
-			} else {
-				if (event.type == SDL_KEYUP && event.key.keysym.sym == SDLK_RIGHT) {
-					jewelSelected = g.move(jewelSelected, "right");
-				} else if (event.type == SDL_KEYUP && event.key.keysym.sym == SDLK_LEFT) {
-					jewelSelected = g.move(jewelSelected, "left");
-				} else if (event.type == SDL_KEYUP && event.key.keysym.sym == SDLK_UP) {
-					jewelSelected = g.move(jewelSelected, "up");
-				} else if (event.type == SDL_KEYUP && event.key.keysym.sym == SDLK_DOWN) {
-					jewelSelected = g.move(jewelSelected, "down");
-				}
+			if (event.type == SDL_KEYUP && event.key.keysym.sym == SDLK_RIGHT) {
+				keys.right = true;
+			} else if (event.type == SDL_KEYUP && event.key.keysym.sym == SDLK_LEFT) {
+				keys.left = true;
+			} else if (event.type == SDL_KEYUP && event.key.keysym.sym == SDLK_UP) {
+				keys.up = true;
+			} else if (event.type == SDL_KEYUP && event.key.keysym.sym == SDLK_DOWN) {
+				keys.down = true;
 			}
 
 			if (event.type == SDL_KEYUP && 
@@ -99,6 +88,37 @@ void runGame() {
 			} else if (event.type == SDL_KEYDOWN && 
 				 (event.key.keysym.sym == SDLK_LSHIFT || event.key.keysym.sym == SDLK_RSHIFT)) {
 				locked = true;
+			}
+		}
+
+		// LOGIC
+		if (locked) {
+			if (keys.right) {
+				jewelSelected = g.swap(jewelSelected, (*jewelSelected).right);
+				keys.right = false;
+			} else if (keys.left) {
+				jewelSelected = g.swap(jewelSelected, (*jewelSelected).left);
+				keys.left = false;
+			} else if (keys.up) {
+				jewelSelected = g.swap(jewelSelected, (*jewelSelected).up);
+				keys.up = false;
+			} else if (keys.down) {
+				jewelSelected = g.swap(jewelSelected, (*jewelSelected).down);
+				keys.down = false;
+			}
+		} else {
+			if (keys.right) {
+				jewelSelected = g.move(jewelSelected, "right");
+				keys.right = false;
+			} else if (keys.left) {
+				jewelSelected = g.move(jewelSelected, "left");
+				keys.left = false;
+			} else if (keys.up) {
+				jewelSelected = g.move(jewelSelected, "up");
+				keys.up = false;
+			} else if (keys.down) {
+				jewelSelected = g.move(jewelSelected, "down");
+				keys.down = false;
 			}
 		}
 

@@ -56,3 +56,11 @@ public:
 
 	Jewel *move(Jewel *selectedJewel, string direction);
 };
+
+// events to be used to hold info for game logic
+struct Keys {
+	bool right;
+	bool left;
+	bool up;
+	bool down;
+};

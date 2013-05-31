@@ -11,7 +11,7 @@
 			"file": "main.cpp",
 			"settings":
 			{
-				"buffer_size": 3016,
+				"buffer_size": 4177,
 				"line_ending": "Unix"
 			}
 		},
@@ -19,7 +19,7 @@
 			"file": "Makefile",
 			"settings":
 			{
-				"buffer_size": 452,
+				"buffer_size": 434,
 				"line_ending": "Unix"
 			}
 		},
@@ -27,7 +27,7 @@
 			"file": "Grid.cpp",
 			"settings":
 			{
-				"buffer_size": 3329,
+				"buffer_size": 5078,
 				"line_ending": "Unix"
 			}
 		},
@@ -35,17 +35,9 @@
 			"file": "Grid.h",
 			"settings":
 			{
-				"buffer_size": 803,
+				"buffer_size": 931,
 				"line_ending": "Unix",
 				"name": "// Hari Ganesan 1/12/13"
-			}
-		},
-		{
-			"file": "/Users/Hari/scm/yale-tetris/tetris.cpp",
-			"settings":
-			{
-				"buffer_size": 7735,
-				"line_ending": "Unix"
 			}
 		}
 	],
@@ -77,10 +69,10 @@
 	},
 	"file_history":
 	[
+		"/Users/Hari/scm/yale-tetris/tetris.cpp",
 		"/Users/Hari/scm/yale-tetris/Grid.cpp",
 		"/Users/Hari/scm/yale-tetris/Grid.h",
 		"/Users/Hari/scm/yale-tetris/Makefile",
-		"/Users/Hari/scm/yale-tetris/tetris.cpp",
 		"/Users/Hari/scm/yale-tetris/README.md",
 		"/Users/Hari/scm/yale-tetris/yale-tetris.sublime-workspace",
 		"/Users/Hari/scm/yale-tetris/test.cpp",
@@ -119,6 +111,38 @@
 		"case_sensitive": false,
 		"find_history":
 		[
+			"g.swap",
+			"(*locked)",
+			"temp",
+			"selected",
+			"locked",
+			"temp",
+			"g.mov",
+			"g.mo",
+			"g.m",
+			"right",
+			"((",
+			"*jewelSelected",
+			"selectedJewel",
+			"*(jewelSel",
+			"jewelSelected,",
+			"*j",
+			"jewelSelected",
+			"*",
+			"right",
+			");",
+			"ve(",
+			"(*",
+			"swap",
+			"move",
+			".direction",
+			"()",
+			"swap(jewelSelected, (*jewelSelected).",
+			"((*jewelSelected)",
+			"(*",
+			"jewelSelected",
+			"->",
+			"SDKL",
 			"selected",
 			"-BORDER",
 			"+BORDER",
@@ -214,39 +238,7 @@
 			"qt",
 			"qtd",
 			"qt",
-			"uli",
-			"lli",
-			"uli",
-			"lli",
-			"CHILD",
-			"tree_cols",
-			"               ",
-			"              ",
-			"             ",
-			"            ",
-			"           ",
-			"          ",
-			"         ",
-			"        ",
-			"       ",
-			"      ",
-			"     ",
-			"    ",
-			"   ",
-			"  ",
-			"CHILD",
-			"qt",
-			"qtd",
-			"qt",
-			"qtCols",
-			"  ",
-			"    ",
-			"   ",
-			"  ",
-			"    ",
-			"   ",
-			"  ",
-			"init_quadrant"
+			"uli"
 		],
 		"highlight": true,
 		"in_selection": false,
@@ -264,7 +256,7 @@
 	"groups":
 	[
 		{
-			"selected": 2,
+			"selected": 0,
 			"sheets":
 			[
 				{
@@ -272,15 +264,15 @@
 					"file": "main.cpp",
 					"settings":
 					{
-						"buffer_size": 3016,
+						"buffer_size": 4177,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								2033,
-								2033
+								1753,
+								1753
 							]
 						],
 						"settings":
@@ -289,7 +281,7 @@
 							"translate_tabs_to_spaces": false
 						},
 						"translation.x": 0.0,
-						"translation.y": 967.0,
+						"translation.y": 1910.0,
 						"zoom_level": 1.0
 					},
 					"type": "text"
@@ -299,15 +291,15 @@
 					"file": "Makefile",
 					"settings":
 					{
-						"buffer_size": 452,
+						"buffer_size": 434,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								225,
-								225
+								357,
+								357
 							]
 						],
 						"settings":
@@ -325,15 +317,15 @@
 					"file": "Grid.cpp",
 					"settings":
 					{
-						"buffer_size": 3329,
+						"buffer_size": 5078,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								3326,
-								3326
+								3588,
+								3588
 							]
 						],
 						"settings":
@@ -342,7 +334,7 @@
 							"translate_tabs_to_spaces": false
 						},
 						"translation.x": 0.0,
-						"translation.y": 1907.0,
+						"translation.y": 0.0,
 						"zoom_level": 1.0
 					},
 					"type": "text"
@@ -352,51 +344,25 @@
 					"file": "Grid.h",
 					"settings":
 					{
-						"buffer_size": 803,
+						"buffer_size": 931,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								803,
-								803
+								359,
+								359
 							]
 						],
 						"settings":
 						{
 							"auto_name": "// Hari Ganesan 1/12/13",
-							"syntax": "Packages/C++/C++.tmLanguage"
-						},
-						"translation.x": 0.0,
-						"translation.y": 122.0,
-						"zoom_level": 1.0
-					},
-					"type": "text"
-				},
-				{
-					"buffer": 4,
-					"file": "/Users/Hari/scm/yale-tetris/tetris.cpp",
-					"settings":
-					{
-						"buffer_size": 7735,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								5070,
-								5065
-							]
-						],
-						"settings":
-						{
 							"syntax": "Packages/C++/C++.tmLanguage",
 							"translate_tabs_to_spaces": false
 						},
 						"translation.x": 0.0,
-						"translation.y": 2626.0,
+						"translation.y": 191.0,
 						"zoom_level": 1.0
 					},
 					"type": "text"
@@ -458,11 +424,11 @@
 	},
 	"select_project":
 	{
-		"height": 0.0,
+		"height": 500.0,
 		"selected_items":
 		[
 		],
-		"width": 0.0
+		"width": 380.0
 	},
 	"show_minimap": true,
 	"show_open_files": false,
