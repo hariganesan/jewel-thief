@@ -15,6 +15,9 @@ const int GRID_WIDTH = 10;
 const int JEWEL_DIM = 40;
 const int BORDER = 5;
 
+const int JEWEL_DEF_X = 3;
+const int JEWEL_DEF_Y = 2;
+
 enum {
 	WHITE,
 	RED,
@@ -43,20 +46,21 @@ struct Jewel {
 };
 
 class Grid {
-	Jewel grid[GRID_HEIGHT][GRID_WIDTH];
+	Jewel *grid[GRID_HEIGHT][GRID_WIDTH];
 	int numMoves;
 	bool remove;
-	
+
 public:
+	int selectedX;
+	int selectedY;
+
 	Grid();
 	void fillGrid();
 	void displayGrid(int x, int y);
-	void pickColor(Jewel jewel);
+	void pickColor(Jewel *jewel);
 	Jewel *selectJewel(int x, int y);
-	Jewel *selectJewel(Jewel *oldJewel, Jewel *jewel);
 	void lockJewel(bool locked);
-	Jewel *swap(Jewel *locked, Jewel *selected);
-	Jewel *move(Jewel *selectedJewel, string direction);
+	Jewel *swap(int newX, int newY);
 	void checkJewel(Jewel *original);
 	void removeJewels(Jewel *original, int right, int left, int up, int down);
 };

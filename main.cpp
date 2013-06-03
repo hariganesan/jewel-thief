@@ -56,9 +56,9 @@ int main(int argc, char **argv) {
 void runGame() {
 	bool isRunning = true;
 	bool locked = false;
-	Grid g = Grid();
-	g.fillGrid();
-	Jewel *jewelSelected = g.selectJewel(3,2);
+	Grid *g = new Grid();
+	g->fillGrid();
+	Jewel *jewelSelected = g->selectJewel(JEWEL_DEF_X,JEWEL_DEF_Y);
 	Keys keys = Keys();
 
 	SDL_Event event;	
@@ -94,37 +94,37 @@ void runGame() {
 		// LOGIC
 		if (locked) {
 			if (keys.right) {
-				jewelSelected = g.swap(jewelSelected, jewelSelected->right);
+				jewelSelected = g->swap(g->selectedX+1, g->selectedY);
 				keys.right = false;
 			} else if (keys.left) {
-				jewelSelected = g.swap(jewelSelected, jewelSelected->left);
+				jewelSelected = g->swap(g->selectedX-1, g->selectedY);
 				keys.left = false;
 			} else if (keys.up) {
-				jewelSelected = g.swap(jewelSelected, jewelSelected->up);
+				jewelSelected = g->swap(g->selectedX, g->selectedY+1);
 				keys.up = false;
 			} else if (keys.down) {
-				jewelSelected = g.swap(jewelSelected, jewelSelected->down);
+				jewelSelected = g->swap(g->selectedX, g->selectedY-1);
 				keys.down = false;
 			}
 		} else {
 			if (keys.right) {
-				jewelSelected = g.move(jewelSelected, "right");
+				jewelSelected = g->selectJewel(g->selectedX+1, g->selectedY);
 				keys.right = false;
 			} else if (keys.left) {
-				jewelSelected = g.move(jewelSelected, "left");
+				jewelSelected = g->selectJewel(g->selectedX-1, g->selectedY);
 				keys.left = false;
 			} else if (keys.up) {
-				jewelSelected = g.move(jewelSelected, "up");
+				jewelSelected = g->selectJewel(g->selectedX, g->selectedY+1);
 				keys.up = false;
 			} else if (keys.down) {
-				jewelSelected = g.move(jewelSelected, "down");
+				jewelSelected = g->selectJewel(g->selectedX, g->selectedY-1);
 				keys.down = false;
 			}
 		}
 
-		g.lockJewel(locked);
+		g->lockJewel(locked);
 
-		render(&g);
+		render(g);
 	}
 
 	return;
@@ -167,7 +167,7 @@ void render(Grid *g) {
 		glEnd();
 	}
 
-	(*g).displayGrid(100, 150);
+	g->displayGrid(100, 150);
 
 	////////////////
 	// END DRAWING
