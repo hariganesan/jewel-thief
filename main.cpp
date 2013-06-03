@@ -58,7 +58,7 @@ void runGame() {
 	bool locked = false;
 	Grid *g = new Grid();
 	g->fillGrid();
-	Jewel *jewelSelected = g->selectJewel(JEWEL_DEF_X,JEWEL_DEF_Y);
+	g->selectJewel(JEWEL_DEF_X,JEWEL_DEF_Y);
 	Keys keys = Keys();
 
 	SDL_Event event;	
@@ -94,30 +94,30 @@ void runGame() {
 		// LOGIC
 		if (locked) {
 			if (keys.right) {
-				jewelSelected = g->swap(g->selectedX+1, g->selectedY);
+				g->swap(g->selectedX+1, g->selectedY);
 				keys.right = false;
 			} else if (keys.left) {
-				jewelSelected = g->swap(g->selectedX-1, g->selectedY);
+				g->swap(g->selectedX-1, g->selectedY);
 				keys.left = false;
 			} else if (keys.up) {
-				jewelSelected = g->swap(g->selectedX, g->selectedY+1);
+				g->swap(g->selectedX, g->selectedY+1);
 				keys.up = false;
 			} else if (keys.down) {
-				jewelSelected = g->swap(g->selectedX, g->selectedY-1);
+				g->swap(g->selectedX, g->selectedY-1);
 				keys.down = false;
 			}
 		} else {
 			if (keys.right) {
-				jewelSelected = g->selectJewel(g->selectedX+1, g->selectedY);
+				g->selectJewel(g->selectedX+1, g->selectedY);
 				keys.right = false;
 			} else if (keys.left) {
-				jewelSelected = g->selectJewel(g->selectedX-1, g->selectedY);
+				g->selectJewel(g->selectedX-1, g->selectedY);
 				keys.left = false;
 			} else if (keys.up) {
-				jewelSelected = g->selectJewel(g->selectedX, g->selectedY+1);
+				g->selectJewel(g->selectedX, g->selectedY+1);
 				keys.up = false;
 			} else if (keys.down) {
-				jewelSelected = g->selectJewel(g->selectedX, g->selectedY-1);
+				g->selectJewel(g->selectedX, g->selectedY-1);
 				keys.down = false;
 			}
 		}

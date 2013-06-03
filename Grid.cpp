@@ -135,9 +135,9 @@ void Grid::pickColor(Jewel *jewel) {
 
 }
 
-Jewel *Grid::selectJewel(int x, int y) {
+void Grid::selectJewel(int x, int y) {
 	if (x < 0 || x >= GRID_WIDTH || y < 0 || y >= GRID_HEIGHT)
-		return grid[selectedX][selectedY];
+		return;
 
 	for (int i = 0; i < GRID_WIDTH; i++) {
 		for (int j = 0; j < GRID_HEIGHT; j++) {
@@ -148,7 +148,7 @@ Jewel *Grid::selectJewel(int x, int y) {
 	selectedX = x;
 	selectedY = y;
 	grid[x][y]->selected = true;
-	return grid[x][y];
+	return;
 }
 
 // deprecated
@@ -175,12 +175,12 @@ void Grid::lockJewel(bool locked) {
 }
 
 // TODO: rewrite for basic pointers.
-Jewel *Grid::swap(int newX, int newY) {
+void Grid::swap(int newX, int newY) {
 	Jewel *temp;
 
 	// for edges
 	if (newX < 0 || newX >= GRID_WIDTH || newY < 0 || newY >= GRID_HEIGHT)
-		return grid[selectedX][selectedY];
+		return;
 
 	temp = grid[newX][newY];
 	grid[newX][newY] = grid[selectedX][selectedY];
@@ -188,15 +188,17 @@ Jewel *Grid::swap(int newX, int newY) {
 
 	numMoves++;
 
-	selectJewel(newX, newY);
-	//checkJewel(NULL);
-	//checkJewel(NULL);
+	checkJewel(newX, newY);
+	checkJewel(selectedX, selectedY);
 
-	return grid[newX][newY];
+	selectJewel(newX, newY);
+
+	return;
 }
 
 // checks to see if a Jewel satisfies a requirement in any direction
-void Grid::checkJewel(Jewel *original) {
+void Grid::checkJewel(int x, int y) {
+	Jewel *original = grid[x][y];
 	int right, left, up, down;
 	right = left = up = down = 0;
 	Jewel *current, *next;
@@ -246,10 +248,11 @@ void Grid::checkJewel(Jewel *original) {
 	cout << "up: " << up << endl;
 	cout << "down: " << down << endl;
 
-	//removeJewels(original, right, left, up, down);
+	//removeJewels(x, y, right, left, up, down);
 }
 
-void Grid::removeJewels(Jewel *original, int right, int left, int up, int down) {
+void Grid::removeJewels(int x, int y, int right, int left, int up, int down) {
+	Jewel *original = grid[x][y];
 	Jewel *current, *chain;
 
 	if (right+left >= 3) {

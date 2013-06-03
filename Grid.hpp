@@ -58,11 +58,11 @@ public:
 	void fillGrid();
 	void displayGrid(int x, int y);
 	void pickColor(Jewel *jewel);
-	Jewel *selectJewel(int x, int y);
+	void selectJewel(int x, int y);
 	void lockJewel(bool locked);
-	Jewel *swap(int newX, int newY);
-	void checkJewel(Jewel *original);
-	void removeJewels(Jewel *original, int right, int left, int up, int down);
+	void swap(int newX, int newY);
+	void checkJewel(int x, int y);
+	void removeJewels(int x, int y, int right, int left, int up, int down);
 };
 
 // events to be used to hold info for game logic
