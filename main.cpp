@@ -46,6 +46,7 @@ int main(int argc, char **argv) {
 	glLoadIdentity(); // save state
 	glDisable(GL_DEPTH_TEST); // disable 3D drawing
 
+	srand(time(NULL));
 	runGame();
 
 	TTF_Quit();
@@ -55,9 +56,9 @@ int main(int argc, char **argv) {
 
 void runGame() {
 	bool isRunning = true;
+	bool lockedToggle = false;
 	bool locked = false;
 	Grid *g = new Grid();
-	g->fillGrid();
 	g->selectJewel(JEWEL_DEF_X,JEWEL_DEF_Y);
 	Keys keys = Keys();
 
@@ -84,9 +85,11 @@ void runGame() {
 
 			if (event.type == SDL_KEYUP && 
 				 (event.key.keysym.sym == SDLK_LSHIFT || event.key.keysym.sym == SDLK_RSHIFT)) {
+				lockedToggle = true;
 				locked = false;
 			} else if (event.type == SDL_KEYDOWN && 
 				 (event.key.keysym.sym == SDLK_LSHIFT || event.key.keysym.sym == SDLK_RSHIFT)) {
+				lockedToggle = true;
 				locked = true;
 			}
 		}
@@ -122,7 +125,10 @@ void runGame() {
 			}
 		}
 
-		g->lockJewel(locked);
+		if (lockedToggle) {
+			g->toggleLockedJewel(locked);
+			lockedToggle = false;
+		}
 
 		render(g);
 	}

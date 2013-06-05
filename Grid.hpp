@@ -43,10 +43,17 @@ struct Jewel {
 	// coords in grid
 	int x;
 	int y;
+	Jewel() {
+		color = rand() % 7;
+		selected = false;
+		locked = false;
+		special = (rand() % 30 == 0) ? true : false;
+		removed = false;
+	};
 };
 
 class Grid {
-	Jewel *grid[GRID_HEIGHT][GRID_WIDTH];
+	Jewel *grid[GRID_WIDTH][GRID_HEIGHT];
 	int numMoves;
 	bool remove;
 
@@ -59,7 +66,7 @@ public:
 	void displayGrid(int x, int y);
 	void pickColor(Jewel *jewel);
 	void selectJewel(int x, int y);
-	void lockJewel(bool locked);
+	void toggleLockedJewel(bool locked);
 	void swap(int newX, int newY);
 	void checkJewel(int x, int y);
 	void removeJewels(int x, int y, int right, int left, int up, int down);

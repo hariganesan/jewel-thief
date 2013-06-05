@@ -11,7 +11,7 @@
 			"file": "main.cpp",
 			"settings":
 			{
-				"buffer_size": 4177,
+				"buffer_size": 4411,
 				"line_ending": "Unix"
 			}
 		},
@@ -19,7 +19,7 @@
 			"file": "Makefile",
 			"settings":
 			{
-				"buffer_size": 434,
+				"buffer_size": 415,
 				"line_ending": "Unix"
 			}
 		},
@@ -27,15 +27,15 @@
 			"file": "Grid.cpp",
 			"settings":
 			{
-				"buffer_size": 5078,
+				"buffer_size": 6104,
 				"line_ending": "Unix"
 			}
 		},
 		{
-			"file": "Grid.h",
+			"file": "Grid.hpp",
 			"settings":
 			{
-				"buffer_size": 931,
+				"buffer_size": 1297,
 				"line_ending": "Unix",
 				"name": "// Hari Ganesan 1/12/13"
 			}
@@ -111,6 +111,32 @@
 		"case_sensitive": false,
 		"find_history":
 		[
+			"grid[i][j]->",
+			"next = grid",
+			"(next = grid[currX-1][currY])",
+			"current->color",
+			"->color << \", \" << next->color <",
+			"t->color << endl;",
+			">color) {",
+			"Jewel *original",
+			"jewelSelected = ",
+			"y",
+			"x",
+			"j",
+			"checkJewel",
+			"].",
+			".",
+			"g.",
+			"move(jewelSelected",
+			"right",
+			"check",
+			"\n				ke",
+			").",
+			"false;",
+			"locked",
+			"keys.",
+			"event.type == SDL_KEYUP && event.key.keysym.sym == SDLK_",
+			"jewelSelected = g.swap(jewelSelected, (*jewelSelected)",
 			"g.swap",
 			"(*locked)",
 			"temp",
@@ -212,33 +238,7 @@
 			"nodes",
 			"node",
 			"//",
-			"	",
-			"dist =",
-			"lldist =",
-			"dist",
-			"ruler",
-			"qtsize",
-			"*size",
-			"size",
-			"qt",
-			"distance",
-			"queueSize",
-			"qt",
-			"inBox",
-			"nodesToCheck",
-			"noCandidates",
-			"continue;\n      }\n      ",
-			"CHILD",
-			"      {",
-			"qt",
-			"qtd",
-			"qt",
-			"END_POINT",
-			"START_POINT",
-			"qt",
-			"qtd",
-			"qt",
-			"uli"
+			"	"
 		],
 		"highlight": true,
 		"in_selection": false,
@@ -264,15 +264,15 @@
 					"file": "main.cpp",
 					"settings":
 					{
-						"buffer_size": 4177,
+						"buffer_size": 4411,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								1753,
-								1753
+								1364,
+								1364
 							]
 						],
 						"settings":
@@ -281,7 +281,7 @@
 							"translate_tabs_to_spaces": false
 						},
 						"translation.x": 0.0,
-						"translation.y": 1910.0,
+						"translation.y": 0.0,
 						"zoom_level": 1.0
 					},
 					"type": "text"
@@ -291,15 +291,15 @@
 					"file": "Makefile",
 					"settings":
 					{
-						"buffer_size": 434,
+						"buffer_size": 415,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								357,
-								357
+								415,
+								415
 							]
 						],
 						"settings":
@@ -317,15 +317,15 @@
 					"file": "Grid.cpp",
 					"settings":
 					{
-						"buffer_size": 5078,
+						"buffer_size": 6104,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								3588,
-								3588
+								5567,
+								5567
 							]
 						],
 						"settings":
@@ -341,18 +341,18 @@
 				},
 				{
 					"buffer": 3,
-					"file": "Grid.h",
+					"file": "Grid.hpp",
 					"settings":
 					{
-						"buffer_size": 931,
+						"buffer_size": 1297,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								359,
-								359
+								620,
+								620
 							]
 						],
 						"settings":
@@ -362,7 +362,7 @@
 							"translate_tabs_to_spaces": false
 						},
 						"translation.x": 0.0,
-						"translation.y": 191.0,
+						"translation.y": 0.0,
 						"zoom_level": 1.0
 					},
 					"type": "text"

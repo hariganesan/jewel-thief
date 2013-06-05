@@ -13,8 +13,7 @@ Grid::Grid() : numMoves(0), remove(false) {
 			grid[i][j]->x = i;
 			grid[i][j]->y = j;
 
-			// flip vertical axes?
-			// only do for display fns!
+			// only flip axes for display fns!
 			if (j - 1 < 0) {
 				grid[i][j]->down = NULL;
 			} else {
@@ -43,17 +42,9 @@ Grid::Grid() : numMoves(0), remove(false) {
 }
 
 void Grid::fillGrid() {
-	srand(time(NULL));
-	
 	for (int i = 0; i < GRID_WIDTH; i++) {
 		for (int j = 0; j < GRID_HEIGHT; j++) {
 			grid[i][j] = new Jewel();
-
-			grid[i][j]->color = rand() % 7;
-			grid[i][j]->selected = false;
-			grid[i][j]->locked = false;
-			grid[i][j]->special = (rand() % 30 == 0) ? true : false;
-			grid[i][j]->removed = false;
 		}
 	}
 }
@@ -107,8 +98,6 @@ void Grid::displayGrid(int x, int y) {
 void Grid::pickColor(Jewel *jewel) {
 	int color = jewel->color;
 
-
-
 	if (color == RED) {
 		glColor4ub(205, 0, 0, 255);
 	} else if (color == ORANGE) {
@@ -160,17 +149,11 @@ Jewel *Grid::selectJewel(Jewel *oldJewel, Jewel *jewel) {
 	return jewel;
 } */
 
-void Grid::lockJewel(bool locked) {
-	for (int i = 0; i < GRID_WIDTH; i++) {
-		for (int j = 0; j < GRID_HEIGHT; j++) {
-			if (grid[i][j]->selected) {
-				if (locked) {
-					grid[i][j]->locked = true;
-				} else {
-					grid[i][j]->locked = false;
-				}
-			}
-		}
+void Grid::toggleLockedJewel(bool locked) {
+	if (locked) {
+		grid[selectedX][selectedY]->locked = true;
+	}	else {
+		grid[selectedX][selectedY]->locked = false;
 	}
 }
 
@@ -197,120 +180,115 @@ void Grid::swap(int newX, int newY) {
 }
 
 // checks to see if a Jewel satisfies a requirement in any direction
-void Grid::checkJewel(int x, int y) {
-	Jewel *original = grid[x][y];
+void Grid::checkJewel(int origX, int origY) {
 	int right, left, up, down;
 	right = left = up = down = 0;
-	Jewel *current, *next;
+	int currX, currY;
+	Jewel *next;
 
-	current = original;
-	while ((next = current->right) != NULL) {
-		if (next->color != current->color) {
+	currX = origX; currY = origY;
+	while (currX + 1 < GRID_WIDTH) {
+		next = grid[currX+1][currY];
+		if (next->color != grid[currX][currY]->color) {	
 			break;
 		} else {
 			right++;
-			current = next;
+			currX++;
 		}
 	}
 
-	current = original;
-	while ((next = current->left) != NULL) {
-		if (next->color != current->color) {
+	currX = origX; currY = origY;
+	while (currX - 1 >= 0) {
+		next = grid[currX-1][currY];
+		if (next->color != grid[currX][currY]->color) {	
 			break;
 		} else {
 			left++;
-			current = next;
+			currX--;
 		}
 	}
 
-	current = original;
-	while ((next = current->up) != NULL) {
-		if (next->color != current->color) {
+	currX = origX; currY = origY;
+	while (currY + 1 < GRID_HEIGHT) {
+		next = grid[currX][currY+1];
+		if (next->color != grid[currX][currY]->color) {	
 			break;
 		} else {
 			up++;
-			current = next;
+			currY++;
 		}
 	}
 
-	current = original;
-	while ((next = current->down) != NULL) {
-		if (next->color != current->color) {
+	currX = origX; currY = origY;
+	while (currY - 1 >= 0) {
+		next = grid[currX][currY-1];
+		if (next->color != grid[currX][currY]->color) {	
 			break;
 		} else {
 			down++;
-			current = next;
+			currY--;
 		}
 	}
 
-	cout << "right: " << right << endl;
-	cout << "left: " << left << endl;
-	cout << "up: " << up << endl;
-	cout << "down: " << down << endl;
-
-	//removeJewels(x, y, right, left, up, down);
+	removeJewels(origX, origY, right, left, up, down);
 }
 
-void Grid::removeJewels(int x, int y, int right, int left, int up, int down) {
-	Jewel *original = grid[x][y];
-	Jewel *current, *chain;
+void Grid::removeJewels(int origX, int origY, int right, int left, int up, int down) {
+	int currX, currY;
+	int chainX, chainY;
 
 	if (right+left >= 3) {
-		current = original;
+		currX = origX; currY = origY;
 
 		// move to left
 		for (int i = 0; i < left; i++) {
-			if (current->left != NULL) {
-				current = current->left;
-			}
+			currX--;
 		}
 
-		// move across, switching pointers
+		// move across
 		// except for possibility of (up+down)
-		for (int i = 0; i < left+right; i++) {
-			if (!(up+down < 3 && i == left)) {
-				chain = current;
-				while (chain->up != NULL) {
-					chain = chain->up; // copy jewels to grid
+		for (int i = 0; i < left+right+1; i++) {
+			if (currX >= GRID_WIDTH)
+				cerr << "error: out of bounds Grid.cpp/252" << endl;
+
+			if (!(up+down >= 3 && i == left)) {
+				chainX = currX; chainY = currY;
+				while (chainY + 1 < GRID_HEIGHT) {
+					grid[chainX][chainY] = grid[chainX][chainY+1];
+					chainY++;
 				}
 
-				chain->up = new Jewel(); // copy jewel to grid
+				grid[chainX][chainY] = new Jewel(); // copy jewel to grid
 			}
 			// move across
-			if (current->right != NULL)
-				current = current->right;
+			currX++;
 		}
 	}
 
 	if (up+down >= 3) {
-		current = original;
+		currX = origX; currY = origY;
 
 		// move down
 		for (int i = 0; i < down; i++) {
-			if (current->down != NULL) {
-				current = current->down;
-			}
+			currY--;
 		}
 
 		// move chain up
-		chain = current;
-		for (int i = 0; i < down+up; i++) {
-			if (chain->up != NULL) {
-				chain = chain->up;
-			}
+		chainX = currX; chainY = currY;
+		for (int i = 0; i < down+up+1; i++) {
+			chainY++;
 		}
 
 		// copy chain down to current if possible
-		for (int i = 0; i < down+up; i++) {
-			if (chain != NULL) {
-				current = chain; // copy jewel to grid
-				chain = new Jewel(); // copy jewel to grid
-				chain = chain->up;
+		for (int i = 0; currY < GRID_HEIGHT; i++) {
+			if (chainY < GRID_HEIGHT) {
+				grid[currX][currY] = grid[chainX][chainY]; // copy jewel to grid
+				chainY++;
 			} else {
-				current = new Jewel(); // copy jewel to grid
+				grid[currX][currY] = new Jewel(); // copy jewel to grid
 			}
 
-			current = current->up;
+			currY++;
 		}
 	}
 }
